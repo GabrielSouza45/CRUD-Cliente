@@ -1,7 +1,7 @@
 import CadastroCliente from "../cadastroCliente/CadastroCliente";
-import CadastroMusica from "../cadastroMusica/CadastroMusica";
+import CadastroEndereco from "../cadastroEndereco/CadastroEndereco";
 import Tabela from "../consultas/tabela";
-import TabelaMusica from "../consultas/tabelaMusica";
+import TabelaEndereco from "../consultas/tabelaEndereco";
 import "./cadastro.css";
 
 const Cadastro = ({
@@ -13,14 +13,14 @@ const Cadastro = ({
   vetor,
   altCliente,
   rmvCliente,
-  eventoMus,
-  cadMusica,
-  objMus,
-  selecionarMusica,
-  vetorMus,
-  altMusica,
-  rmvMusica,
-  botaoMus,
+  eventoEnd,
+  cadEndereco,
+  objEnd,
+  selecionarEndereco,
+  vetorEnd,
+  altEndereco,
+  rmvEndereco,
+  botaoEnd,
 }) => {
   return (
     <>
@@ -37,26 +37,26 @@ const Cadastro = ({
 
           {/* <button onClick={cadastrarCliente}>Cadastrar</button> */}
 
-          <CadastroMusica
-            eventoMus={eventoMus}
-            cadMusica={cadMusica}
-            objMus={objMus}
-            selecionarMusica={selecionarMusica}
-            vetorMus={vetorMus}
-            altMusica={altMusica}
-            rmvMusica={rmvMusica}
-            botaoMus={botaoMus}
+          <CadastroEndereco
+            eventoEnd={eventoEnd}
+            cadEndereco={cadEndereco}
+            objEnd={objEnd}
+            selecionarEndereco={selecionarEndereco}
+            vetorEnd={vetorEnd}
+            altEndereco={altEndereco}
+            rmvEndereco={rmvEndereco}
+            botaoEnd={botaoEnd}
             vetor={vetor}
           />
-          {/* <button onClick={cadastrarMusica}>Cadastrar</button> */}
+          {/* <button onClick={cadastrarEndereco}>Cadastrar</button> */}
         </div>
       </section>
 
       <section className="tabelaCliente">
         <Tabela vetor={vetor} selecionar={selecionar} />
       </section>
-      <section className="tabelaMusica">
-        <TabelaMusica vetor={vetorMus} vetor2 ={vetor} selecionar={selecionarMusica} />
+      <section className="tabelaEndereco">
+        <TabelaEndereco vetor={vetorEnd} vetor2 ={vetor} selecionar={selecionarEndereco} />
       </section>
     </>
   );

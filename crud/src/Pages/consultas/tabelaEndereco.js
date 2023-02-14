@@ -1,23 +1,23 @@
 import { Table } from "react-bootstrap";
 import "./consultas.css";
 
-function TabelaMusica({ vetor, vetor2, selecionar }) {
+function TabelaEndereco({ vetor, vetor2, selecionar }) {
   return (
     <>
-      <section className="tabelaMusicas">
-        <h3>Musicas</h3>
+      <section className="tabelaEnderecos">
+        <h3>Enderecos</h3>
         <div className="tables">
           <table className="tabela">
             <thead>
               <tr className="endereco">
                 <th>#</th>
-                <th>cliente</th>
-                <th>bairro</th>
-                <th>logradouro</th>
-                <th>cep</th>
-                <th>numero</th>
-                <th>cidade</th>
-                <th>uf</th>
+                <th>ClienteId</th>
+                <th>Bairro</th>
+                <th>Logradouro</th>
+                <th>CEP</th>
+                <th>Número</th>
+                <th>Cidade</th>
+                <th>UF</th>
                 <th>selecionar</th>
               </tr>
             </thead>
@@ -53,4 +53,4 @@ function TabelaMusica({ vetor, vetor2, selecionar }) {
   );
 }
 
-export default TabelaMusica;
+export default TabelaEndereco;

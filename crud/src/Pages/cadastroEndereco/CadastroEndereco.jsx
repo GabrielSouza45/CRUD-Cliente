@@ -1,18 +1,18 @@
 import InputLabel from "../../Components/inputLabel/inputLabel";
 import Option from '../../Components/Label/optionLabel'
-import './cadMusica.css'
+import './cadEndereco.css'
 import {BsPencil} from "react-icons/bs";
 import {BsTrash} from "react-icons/bs";
 import {IoIosCloseCircleOutline} from "react-icons/io";
 
-const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, vetorMus, altMusica, rmvMusica, botaoMus}) => {
+const CadastroEndereco = ({vetor, eventoEnd, cadEndereco, objEnd, selecionarEndereco, vetorEnd, altEndereco, rmvEndereco, botaoEnd}) => {
   return (
     <section className="cadastro-endereco">
-      <h3>Música</h3>
-      <form className="cadastroMusica">
+      <h3>Endereço</h3>
+      <form className="cadastroEndereco">
 
       <label>Cliente</label>
-      <select name="id_cliente" id="id_cliente" onChange={eventoMus}>
+      <select name="id_cliente" id="id_cliente" onChange={eventoEnd}>
         <option value="" >Escolha uma opção</option>
         {vetor.map((obj, indice) => (
           
@@ -23,8 +23,8 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
       </select>
         <InputLabel
           texto="Bairro"
-          evento={eventoMus}
-          valor={objMus.bairro}
+          evento={eventoEnd}
+          valor={objEnd.bairro}
           nome="bairro"
           tipo="text"
           holder="Digite aqui"
@@ -32,40 +32,40 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
 
         <InputLabel
           texto="Logradouro"
-          evento={eventoMus}
-          valor={objMus.logradouro}
+          evento={eventoEnd}
+          valor={objEnd.logradouro}
           nome="logradouro"
           tipo="text"
           holder="Digite aqui"
         />
         <InputLabel
           texto="CEP"
-          evento={eventoMus}
-          valor={objMus.cep}
+          evento={eventoEnd}
+          valor={objEnd.cep}
           nome="cep"
           tipo="number"
           holder="Digite aqui"
         />
         <InputLabel
           texto="Número"
-          evento={eventoMus}
-          valor={objMus.numero}
+          evento={eventoEnd}
+          valor={objEnd.numero}
           nome="numero"
           tipo="number"
           holder="Digite aqui"
         />
         <InputLabel
           texto="Cidade"
-          evento={eventoMus}
-          valor={objMus.cidade}
+          evento={eventoEnd}
+          valor={objEnd.cidade}
           nome="cidade"
           tipo="text"
           holder="Digite aqui"
         />
         <InputLabel
           texto="UF"
-          evento={eventoMus}
-          valor={objMus.uf}
+          evento={eventoEnd}
+          valor={objEnd.uf}
           nome="uf"
           tipo="text"
           holder="Digite aqui"
@@ -74,12 +74,12 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
         
         
     
-      {botaoMus ? (
-          <input type="button" className="buttonCadastrar" value="cadastrar" onClick={cadMusica} />
+      {botaoEnd ? (
+          <input type="button" className="buttonCadastrar" value="cadastrar" onClick={cadEndereco} />
         ) : (
           <div className="buttons">
-            <button  className="buttonEditar" id="alt" onClick={altMusica}><BsPencil /></button>
-            <button  className="buttonEditar" id="rmv" onClick={rmvMusica}><BsTrash /></button>
+            <button  className="buttonEditar" id="alt" onClick={altEndereco}><BsPencil /></button>
+            <button  className="buttonEditar" id="rmv" onClick={rmvEndereco}><BsTrash /></button>
             <button  className="buttonEditar" id="esc" ><IoIosCloseCircleOutline /></button>
           </div>
         )}
@@ -88,4 +88,4 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
   );
 };
 
-export default CadastroMusica;
+export default CadastroEndereco;

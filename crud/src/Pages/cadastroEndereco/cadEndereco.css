@@ -2,7 +2,7 @@
     width: 50%;
     text-align: center; 
     display: grid;
-    grid-template-rows: 80px 600px;
+    grid-template-rows: 80px 550px;
 }
 
 form{

@@ -1,6 +1,7 @@
 import InputLabel from "../../Components/inputLabel/inputLabel";
 import "../cadastroCliente/cadCliente.css";
 import "../../Components/btnCadastrar/btnCadastrar.css";
+import InputLabelCpf from "../../Components/inputLabel/inputLabelCpf";
 import { BsPencil } from "react-icons/bs";
 import { BsTrash } from "react-icons/bs";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -35,7 +36,7 @@ const CadastroCliente = ({
           holder="Digite aqui"
         />
 
-        <InputLabel
+        <InputLabelCpf
           texto="CPF"
           evento={evento}
           valor={objCliente.cpf}

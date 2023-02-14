@@ -46,7 +46,7 @@ tr{
     text-align: center;
 }
 
-.tabelaMusicas h3{
+.tabelaEnderecos h3{
     width: 100vw;
     margin-top: 50px;
     align-items: center;
@@ -65,9 +65,9 @@ tr{
 
 tr{
     border: 1px solid;
-    width: 800px;
+    width: 1000px;
     display: grid;
-    grid-template-columns: 1fr 3fr 2fr 2fr 2fr;
+    grid-template-columns: 1fr 3fr repeat(3, 2fr);
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -77,15 +77,15 @@ tr{
 
 .endereco{
     border: 1px solid;
-    width: 950px;
+    width: 1200px;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: 1fr 2fr repeat(7, 3fr);
     text-align: center;
     justify-content: center;
     align-items: center;
     border: 1px solid  #d4d4d4;
 }
 
-.tabelaMusicas{
+.tabelaEnderecos{
     padding-bottom: 100px;
 }

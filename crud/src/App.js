@@ -6,7 +6,7 @@ import Cadastro from "./Pages/Cadastros/cadastro";
 
 import Tabela from "./Pages/consultas/tabela";
 import Inicio from "./Pages/Inicio/inicio.jsx";
-import TabelaMusica from "./Pages/consultas/tabelaMusica";
+import TabelaEndereco from "./Pages/consultas/tabelaEndereco";
 
 function App() {
   // Objeto cliente
@@ -142,9 +142,9 @@ function App() {
 
 
 
-  // Remover Musica
-  const removerMusica = () => {
-    fetch("http://localhost:8080/removerMusica/" + objMusica.id_endereco, {
+  // Remover Endereco
+  const removerEndereco = () => {
+    fetch("http://localhost:8080/removerEndereco/" + objEndereco.id_endereco, {
       method: "delete",
       headers: {
         "Content-type": "application/json",
@@ -154,20 +154,20 @@ function App() {
       .then((retorno) => retorno.json())
       .then((retorno_convertido) => {
         // mensagem
-        alert("Musica removida com sucesso." + retorno_convertido.mensagem);
+        alert("Endereco removida com sucesso." + retorno_convertido.mensagem);
 
-        //copia do vetor de Musica
+        //copia do vetor de Endereco
         let vetorTemp = [...enderecos];
 
         // indice
         let indices = vetorTemp.findIndex((p) => {
-          return p.id_endereco === objMusica.id_endereco;
+          return p.id_endereco === objEndereco.id_endereco;
         });
 
-        // remover Musica do vetorTemp
+        // remover Endereco do vetorTemp
         vetorTemp.splice(indices, 1);
 
-        // atualizar o vetor de Musica
+        // atualizar o vetor de Endereco
         setCliente(vetorTemp);
 
         limparFormulario();
@@ -192,34 +192,34 @@ function App() {
   };
 
   // UseState
-  const [btnCadastrarMus, setBtnCadastrarMus] = useState(true);
-  const [enderecos, setMusica] = useState([]);
-  const [objMusica, setObjMusica] = useState(endereco);
+  const [btnCadastrarEnd, setBtnCadastrarEnd] = useState(true);
+  const [enderecos, setEndereco] = useState([]);
+  const [objEndereco, setObjEndereco] = useState(endereco);
 
   // UseEffect
   useEffect(() => {
-    fetch("http://localhost:8080/listarMusica")
+    fetch("http://localhost:8080/listarEndereco")
       .then((retorno) => retorno.json())
-      .then((retorno_convertido) => setMusica(retorno_convertido));
+      .then((retorno_convertido) => setEndereco(retorno_convertido));
   }, []);
 
   // Obtendo os dados do formulário
-  const aoDigitarMus = (e) => {
-    setObjMusica({ ...objMusica, [e.target.name]: e.target.value });
+  const aoDigitarEnd = (e) => {
+    setObjEndereco({ ...objEndereco, [e.target.name]: e.target.value });
     console.log(e.target);
   };
 
-  // Selecionar Musica
-  const selecionarMusica = (indices) => {
-    setObjMusica(enderecos[indices]);
-    setBtnCadastrarMus(false);
+  // Selecionar Endereco
+  const selecionarEndereco = (indices) => {
+    setObjEndereco(enderecos[indices]);
+    setBtnCadastrarEnd(false);
   };
 
-  // Cadastrar Musica
-  const cadastrarMusica = () => {
-    fetch("http://localhost:8080/cadastrarMusica", {
+  // Cadastrar Endereco
+  const cadastrarEndereco = () => {
+    fetch("http://localhost:8080/cadastrarEndereco", {
       method: "post",
-      body: JSON.stringify(objMusica),
+      body: JSON.stringify(objEndereco),
       headers: {
         "Content-type": "application/json",
         Accept: "application/json",
@@ -230,18 +230,18 @@ function App() {
         if (retorno_convertido.mensagem !== undefined) {
           alert(retorno_convertido.mensagem);
         } else {
-          setMusica([...enderecos, retorno_convertido]);
-          alert("Musica cadastrado com sucesso!");
-          limparFormularioMus();
+          setEndereco([...enderecos, retorno_convertido]);
+          alert("Endereco cadastrado com sucesso!");
+          limparFormularioEnd();
         }
       });
   };
 
-  // Alterar Musica
-  const alterarMusica = () => {
-    fetch("http://localhost:8080/alterarMusica", {
+  // Alterar Endereco
+  const alterarEndereco = () => {
+    fetch("http://localhost:8080/alterarEndereco", {
       method: "put",
-      body: JSON.stringify(objMusica),
+      body: JSON.stringify(objEndereco),
       headers: {
         "Content-type": "application/json",
         Accept: "application/json",
@@ -252,21 +252,21 @@ function App() {
         if (retorno_convertido.mensagem !== undefined) {
           alert(retorno_convertido.mensagem);
         } else {
-          alert("Musica alterado com sucesso!");
+          alert("Endereco alterado com sucesso!");
 
-          //copia do vetor de Musica
+          //copia do vetor de Endereco
           let vetorTemp = [...enderecos];
 
           // indice
           let indices = vetorTemp.findIndex((p) => {
-            return p.id_endereco === objMusica.id_endereco;
+            return p.id_endereco === objEndereco.id_endereco;
           });
 
           // alterar cliente do vetorTemp
-          vetorTemp[indices] = objMusica;
+          vetorTemp[indices] = objEndereco;
 
-          // atualizar o vetor de Musica
-          setMusica(vetorTemp);
+          // atualizar o vetor de Endereco
+          setEndereco(vetorTemp);
 
           limparFormulario();
         }
@@ -274,9 +274,9 @@ function App() {
   };
 
   //Limpar fomulario
-  const limparFormularioMus = () => {
-    setObjMusica(endereco);
-    setBtnCadastrarMus(true);
+  const limparFormularioEnd = () => {
+    setObjEndereco(endereco);
+    setBtnCadastrarEnd(true);
 
     document.location.reload(true);
   };
@@ -291,21 +291,21 @@ function App() {
           element={
             <Cadastro
               evento={aoDigitar}
-              eventoMus={aoDigitarMus}
+              eventoEnd={aoDigitarEnd}
               cadCliente={cadastrarCliente}
-              cadMusica={cadastrarMusica}
+              cadEndereco={cadastrarEndereco}
               objCliente={objCliente}
-              objMus={objMusica}
+              objEnd={objEndereco}
               selecionar={selecionarCliente}
-              selecionarMusica={selecionarMusica}
+              selecionarEndereco={selecionarEndereco}
               vetor={clientes}
-              vetorMus={enderecos}
+              vetorEnd={enderecos}
               altCliente={alterarCliente}
-              altMusica={alterarMusica}
+              altEndereco={alterarEndereco}
               rmvCliente={removerCliente}
-              rmvMusica={removerMusica}
+              rmvEndereco={removerEndereco}
               botao={btnCadastrar}
-              botaoMus={btnCadastrarMus}
+              botaoEnd={btnCadastrarEnd}
             />
           }
         />
@@ -314,9 +314,9 @@ function App() {
           element={<Tabela vetor={clientes} selecionar={selecionarCliente} />}
         />
         <Route
-          path="/ConsultaMusica"
+          path="/ConsultaEndereco"
           element={
-            <TabelaMusica vetor={enderecos} selecionar={selecionarMusica} />
+            <TabelaEndereco vetor={enderecos} selecionar={selecionarEndereco} />
           }
         />
        

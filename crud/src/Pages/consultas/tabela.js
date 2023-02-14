@@ -5,8 +5,8 @@ function Tabela({
   selecionar,
   altCliente,
   rmvCliente,
-  vetorMus,
-  selecionarMus,
+  vetorEnd,
+  selecionarEnd,
 }) {
   return (
     <>

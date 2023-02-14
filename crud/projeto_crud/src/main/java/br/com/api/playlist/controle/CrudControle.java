@@ -30,20 +30,20 @@ public class CrudControle {
 
     
 
-    @PutMapping("/alterarMusica")
+    @PutMapping("/alterarEndereco")
     public ResponseEntity<?> alterar(@RequestBody EnderecoModelo em){
-        return ms.cadastrarAlterar(em,"alterarMusica");
+        return ms.cadastrarAlterar(em,"alterarEndereco");
     }
 
-    @PostMapping("/cadastrarMusica")
+    @PostMapping("/cadastrarEndereco")
     public ResponseEntity<?> cadastrar(@RequestBody EnderecoModelo em){
-        return ms.cadastrarAlterar(em,"cadastrarMusica");
+        return ms.cadastrarAlterar(em,"cadastrarEndereco");
     }
 
 
 
-    @GetMapping("/listarMusica")
-    public Iterable<EnderecoModelo> listarMus(){
+    @GetMapping("/listarEndereco")
+    public Iterable<EnderecoModelo> listarEnd(){
         return ms.listar();
     }
 
@@ -52,7 +52,7 @@ public class CrudControle {
         return cs.remover(id_cliente);
     }
 
-    @DeleteMapping({"/removerMusica/({id_endereco})"})
+    @DeleteMapping({"/removerEndereco/({id_endereco})"})
     public ResponseEntity<RespostaModelo> remover2(@PathVariable Long id_endereco) {
         return ms.remover2(id_endereco);
     }
