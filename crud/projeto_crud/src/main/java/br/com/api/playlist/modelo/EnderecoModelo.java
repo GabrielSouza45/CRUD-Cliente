@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class MusicaModelo {
+public class EnderecoModelo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

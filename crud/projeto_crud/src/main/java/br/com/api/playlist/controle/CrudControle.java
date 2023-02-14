@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.playlist.modelo.CrudModelo;
+import br.com.api.playlist.modelo.EnderecoModelo;
 import br.com.api.playlist.modelo.RespostaModelo;
 import br.com.api.playlist.servico.CrudServico;
-import br.com.api.playlist.servico.MusicaServico;
-import br.com.api.playlist.modelo.MusicaModelo;
+import br.com.api.playlist.servico.EnderecoServico;
 
 
 @RestController
@@ -26,28 +26,28 @@ public class CrudControle {
     private CrudServico cs;
 
     @Autowired
-    private MusicaServico ms;
+    private EnderecoServico ms;
 
     
 
     @PutMapping("/alterarMusica")
-    public ResponseEntity<?> alterar(@RequestBody MusicaModelo mm){
-        return ms.cadastrarAlterar(mm,"alterarMusica");
+    public ResponseEntity<?> alterar(@RequestBody EnderecoModelo em){
+        return ms.cadastrarAlterar(em,"alterarMusica");
     }
 
     @PostMapping("/cadastrarMusica")
-    public ResponseEntity<?> cadastrar(@RequestBody MusicaModelo mm){
-        return ms.cadastrarAlterar(mm,"cadastrarMusica");
+    public ResponseEntity<?> cadastrar(@RequestBody EnderecoModelo em){
+        return ms.cadastrarAlterar(em,"cadastrarMusica");
     }
 
 
 
     @GetMapping("/listarMusica")
-    public Iterable<MusicaModelo> listarMus(){
+    public Iterable<EnderecoModelo> listarMus(){
         return ms.listar();
     }
 
-    @DeleteMapping({"/removerCantor/{id_cliente}"})
+    @DeleteMapping({"/removerCliente/{id_cliente}"})
     public ResponseEntity<RespostaModelo> remover(@PathVariable Long id_cliente) {
         return cs.remover(id_cliente);
     }
@@ -57,19 +57,19 @@ public class CrudControle {
         return ms.remover2(id_endereco);
     }
 
-    @PutMapping("/alterarCantor")
+    @PutMapping("/alterarCliente")
     public ResponseEntity<?> alterar(@RequestBody CrudModelo cm){
         return cs.cadastrarAlterar(cm,"alterar");
     }
 
-    @PostMapping("/cadastrarCantor")
+    @PostMapping("/cadastrarCliente")
     public ResponseEntity<?> cadastrar(@RequestBody CrudModelo cm){
         return cs.cadastrarAlterar(cm,"cadastrar");
     }
 
 
 
-    @GetMapping("/listarCantor")
+    @GetMapping("/listarCliente")
     public Iterable<CrudModelo> listar(){
         return cs.listar();
     }

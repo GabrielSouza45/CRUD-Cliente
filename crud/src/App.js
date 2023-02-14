@@ -9,8 +9,8 @@ import Inicio from "./Pages/Inicio/inicio.jsx";
 import TabelaMusica from "./Pages/consultas/tabelaMusica";
 
 function App() {
-  // Objeto cantor
-  const cantor = { //cliente
+  // Objeto cliente
+  const cliente = { //cliente
     id_cliente: 0,
     nome: "",
     email: "",
@@ -19,33 +19,33 @@ function App() {
 
   // UseState
   const [btnCadastrar, setBtnCadastrar] = useState(true);
-  const [cantores, setCantor] = useState([]);
-  const [objCantor, setObjCantor] = useState(cantor);
+  const [clientes, setCliente] = useState([]);
+  const [objCliente, setObjCliente] = useState(cliente);
 
   // UseEffect
   useEffect(() => {
-    fetch("http://localhost:8080/listarCantor")
+    fetch("http://localhost:8080/listarCliente")
       .then((retorno) => retorno.json())
-      .then((retorno_convertido) => setCantor(retorno_convertido));
+      .then((retorno_convertido) => setCliente(retorno_convertido));
   }, []);
 
   // Obtendo os dados do formulário
   const aoDigitar = (e) => {
-    setObjCantor({ ...objCantor, [e.target.name]: e.target.value });
+    setObjCliente({ ...objCliente, [e.target.name]: e.target.value });
     console.log(e.target);
   };
 
-  // Selecionar cantor
-  const selecionarCantor = (indice) => {
-    setObjCantor(cantores[indice]);
+  // Selecionar cliente
+  const selecionarCliente = (indice) => {
+    setObjCliente(clientes[indice]);
     setBtnCadastrar(false);
   };
 
-  // Cadastrar cantor
-  const cadastrarCantor = () => {
-    fetch("http://localhost:8080/cadastrarCantor", {
+  // Cadastrar cliente
+  const cadastrarCliente = () => {
+    fetch("http://localhost:8080/cadastrarCliente", {
       method: "post",
-      body: JSON.stringify(objCantor),
+      body: JSON.stringify(objCliente),
       headers: {
         "Content-type": "application/json",
         Accept: "application/json",
@@ -56,18 +56,18 @@ function App() {
         if (retorno_convertido.mensagem !== undefined) {
           alert(retorno_convertido.mensagem);
         } else {
-          setCantor([...cantores, retorno_convertido]);
-          alert("Cantor cadastrado com sucesso!");
+          setCliente([...clientes, retorno_convertido]);
+          alert("Cliente cadastrado com sucesso!");
           limparFormulario();
         }
       });
   };
 
-  // Alterar cantor
-  const alterarCantor = () => {
-    fetch("http://localhost:8080/alterarCantor", {
+  // Alterar cliente
+  const alterarCliente = () => {
+    fetch("http://localhost:8080/alterarCliente", {
       method: "put",
-      body: JSON.stringify(objCantor),
+      body: JSON.stringify(objCliente),
       headers: {
         "Content-type": "application/json",
         Accept: "application/json",
@@ -78,21 +78,21 @@ function App() {
         if (retorno_convertido.mensagem !== undefined) {
           alert(retorno_convertido.mensagem);
         } else {
-          alert("Cantor alterado com sucesso!");
+          alert("Cliente alterado com sucesso!");
 
-          //copia do vetor de cantores
-          let vetorTemp = [...cantores];
+          //copia do vetor de clientes
+          let vetorTemp = [...clientes];
 
           // indice
           let indice = vetorTemp.findIndex((p) => {
-            return p.id_cliente === objCantor.id_cliente;
+            return p.id_cliente === objCliente.id_cliente;
           });
 
-          // alterar cantor do vetorTemp
-          vetorTemp[indice] = objCantor;
+          // alterar cliente do vetorTemp
+          vetorTemp[indice] = objCliente;
 
-          // atualizar o vetor de cantores
-          setCantor(vetorTemp);
+          // atualizar o vetor de clientes
+          setCliente(vetorTemp);
 
           limparFormulario();
         }
@@ -101,15 +101,15 @@ function App() {
 
   //Limpar fomulario
   const limparFormulario = () => {
-    setObjCantor(cantor);
+    setObjCliente(cliente);
     setBtnCadastrar(true);
 
     document.location.reload(true);
   };
 
-  // Remover cantor
-  const removerCantor = () => {
-    fetch("http://localhost:8080/removerCantor/" + objCantor.id_cliente, {
+  // Remover cliente
+  const removerCliente = () => {
+    fetch("http://localhost:8080/removerCliente/" + objCliente.id_cliente, {
       method: "delete",
       headers: {
         "Content-type": "application/json",
@@ -119,21 +119,21 @@ function App() {
       .then((retorno) => retorno.json())
       .then((retorno_convertido) => {
         // mensagem
-        alert("Cantor removido com sucesso." + retorno_convertido.mensagem);
+        alert("Cliente removido com sucesso." + retorno_convertido.mensagem);
 
-        //copia do vetor de cantores
-        let vetorTemp = [...cantores];
+        //copia do vetor de clientes
+        let vetorTemp = [...clientes];
 
         // indice
         let indice = vetorTemp.findIndex((p) => {
-          return p.id_cliente === objCantor.id_cliente;
+          return p.id_cliente === objCliente.id_cliente;
         });
 
-        // remover cantor do vetorTemp
+        // remover cliente do vetorTemp
         vetorTemp.splice(indice, 1);
 
-        // atualizar o vetor de cantores
-        setCantor(vetorTemp);
+        // atualizar o vetor de clientes
+        setCliente(vetorTemp);
 
         limparFormulario();
       });
@@ -157,7 +157,7 @@ function App() {
         alert("Musica removida com sucesso." + retorno_convertido.mensagem);
 
         //copia do vetor de Musica
-        let vetorTemp = [...musicas];
+        let vetorTemp = [...enderecos];
 
         // indice
         let indices = vetorTemp.findIndex((p) => {
@@ -168,7 +168,7 @@ function App() {
         vetorTemp.splice(indices, 1);
 
         // atualizar o vetor de Musica
-        setCantor(vetorTemp);
+        setCliente(vetorTemp);
 
         limparFormulario();
       });
@@ -178,8 +178,8 @@ function App() {
 
 
 
-  // Objeto musica
-  const musica = {  //endereco
+  // Objeto endereco
+  const endereco = {  //endereco
     id_endereco: 0,
     id_cliente: 0,
     nome: "",
@@ -193,8 +193,8 @@ function App() {
 
   // UseState
   const [btnCadastrarMus, setBtnCadastrarMus] = useState(true);
-  const [musicas, setMusica] = useState([]);
-  const [objMusica, setObjMusica] = useState(musica);
+  const [enderecos, setMusica] = useState([]);
+  const [objMusica, setObjMusica] = useState(endereco);
 
   // UseEffect
   useEffect(() => {
@@ -211,7 +211,7 @@ function App() {
 
   // Selecionar Musica
   const selecionarMusica = (indices) => {
-    setObjMusica(musicas[indices]);
+    setObjMusica(enderecos[indices]);
     setBtnCadastrarMus(false);
   };
 
@@ -230,7 +230,7 @@ function App() {
         if (retorno_convertido.mensagem !== undefined) {
           alert(retorno_convertido.mensagem);
         } else {
-          setMusica([...musicas, retorno_convertido]);
+          setMusica([...enderecos, retorno_convertido]);
           alert("Musica cadastrado com sucesso!");
           limparFormularioMus();
         }
@@ -255,14 +255,14 @@ function App() {
           alert("Musica alterado com sucesso!");
 
           //copia do vetor de Musica
-          let vetorTemp = [...musicas];
+          let vetorTemp = [...enderecos];
 
           // indice
           let indices = vetorTemp.findIndex((p) => {
             return p.id_endereco === objMusica.id_endereco;
           });
 
-          // alterar cantor do vetorTemp
+          // alterar cliente do vetorTemp
           vetorTemp[indices] = objMusica;
 
           // atualizar o vetor de Musica
@@ -275,7 +275,7 @@ function App() {
 
   //Limpar fomulario
   const limparFormularioMus = () => {
-    setObjMusica(musica);
+    setObjMusica(endereco);
     setBtnCadastrarMus(true);
 
     document.location.reload(true);
@@ -292,17 +292,17 @@ function App() {
             <Cadastro
               evento={aoDigitar}
               eventoMus={aoDigitarMus}
-              cadCantor={cadastrarCantor}
+              cadCliente={cadastrarCliente}
               cadMusica={cadastrarMusica}
-              objCantor={objCantor}
+              objCliente={objCliente}
               objMus={objMusica}
-              selecionar={selecionarCantor}
+              selecionar={selecionarCliente}
               selecionarMusica={selecionarMusica}
-              vetor={cantores}
-              vetorMus={musicas}
-              altCantor={alterarCantor}
+              vetor={clientes}
+              vetorMus={enderecos}
+              altCliente={alterarCliente}
               altMusica={alterarMusica}
-              rmvCantor={removerCantor}
+              rmvCliente={removerCliente}
               rmvMusica={removerMusica}
               botao={btnCadastrar}
               botaoMus={btnCadastrarMus}
@@ -311,12 +311,12 @@ function App() {
         />
         <Route
           path="/Consulta"
-          element={<Tabela vetor={cantores} selecionar={selecionarCantor} />}
+          element={<Tabela vetor={clientes} selecionar={selecionarCliente} />}
         />
         <Route
           path="/ConsultaMusica"
           element={
-            <TabelaMusica vetor={musicas} selecionar={selecionarMusica} />
+            <TabelaMusica vetor={enderecos} selecionar={selecionarMusica} />
           }
         />
        

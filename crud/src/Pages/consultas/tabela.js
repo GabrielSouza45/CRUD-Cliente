@@ -3,15 +3,15 @@ import "./consultas.css";
 function Tabela({
   vetor,
   selecionar,
-  altCantor,
-  rmvCantor,
+  altCliente,
+  rmvCliente,
   vetorMus,
   selecionarMus,
 }) {
   return (
     <>
-      <section className="tabelaCantor">
-        <h3>Cantores</h3>
+      <section className="tabelaCliente">
+        <h3>Clientees</h3>
         <div className="tables">
           <table className="tabela">
             <thead>

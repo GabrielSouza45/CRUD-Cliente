@@ -6,64 +6,65 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import br.com.api.playlist.modelo.MusicaModelo;
+import br.com.api.playlist.modelo.EnderecoModelo;
+
 import br.com.api.playlist.modelo.RespostaModelo;
-import br.com.api.playlist.repositorio.MusicaRepositorio;
+import br.com.api.playlist.repositorio.EnderecoRepositorio;
 
 @Service
 @CrossOrigin(origins = "*")
-public class MusicaServico {
+public class EnderecoServico {
 
     @Autowired
-    private MusicaRepositorio mr;
+    private EnderecoRepositorio er;
 
     @Autowired
     private RespostaModelo rm;
 
     // Método para listar
-    public Iterable<MusicaModelo> listar() {
-        return mr.findAll();
+    public Iterable<EnderecoModelo> listar() {
+        return er.findAll();
     }
 
     // Método para cadastrar ou alterar
-    public ResponseEntity<?> cadastrarAlterar(MusicaModelo mm, String acao) {
-        if (mm.getBairro().equals("")) {
+    public ResponseEntity<?> cadastrarAlterar(EnderecoModelo em, String acao) {
+        if (em.getBairro().equals("")) {
 
             rm.setMensagem("Bairro é obrigatório");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
 
-        } else if (mm.getLogradouro().equals("")) {
+        } else if (em.getLogradouro().equals("")) {
             rm.setMensagem("Logradouro é obrigatório.");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
 
         
-        } else if ((mm.getCep().equals(0) || mm.getCep().equals(null) || mm.getCep().equals(""))){
+        } else if ((em.getCep().equals(0) || em.getCep().equals(null) || em.getCep().equals(""))){
             rm.setMensagem("CEP é obrigatório.");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
 
-        }else if (mm.getId_cliente().equals("") || mm.getId_cliente().equals(null)  ){
+        }else if (em.getId_cliente().equals("") || em.getId_cliente().equals(null)  ){
             rm.setMensagem("Cliente é obrigatório");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
 
-        }else if (mm.getNumero().equals(0) || mm.getNumero().equals(null)  ){
+        }else if (em.getNumero().equals(0) || em.getNumero().equals(null)  ){
             rm.setMensagem("Número é obrigatório");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
 
-        }else if (mm.getCidade().equals("") || mm.getCidade().equals(null)  ){
+        }else if (em.getCidade().equals("") || em.getCidade().equals(null)  ){
             rm.setMensagem("Cidade é obrigatório");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
 
-        }else if (mm.getUf().equals("") || mm.getUf().equals(null)  ){
+        }else if (em.getUf().equals("") || em.getUf().equals(null)  ){
             rm.setMensagem("Uf é obrigatório");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
 
         }
         else {
             if (acao.equals("cadastrar")) {
-                return new ResponseEntity<MusicaModelo>(mr.save(mm), HttpStatus.CREATED);
+                return new ResponseEntity<EnderecoModelo>(er.save(em), HttpStatus.CREATED);
 
             } else {
-                return new ResponseEntity<MusicaModelo>(mr.save(mm), HttpStatus.OK);
+                return new ResponseEntity<EnderecoModelo>(er.save(em), HttpStatus.OK);
 
             }
         }
@@ -73,7 +74,7 @@ public class MusicaServico {
     //Método para remover
     public ResponseEntity<RespostaModelo> remover2(long id_endereco){
 
-        mr.deleteById(id_endereco);
+        er.deleteById(id_endereco);
 
         rm.setMensagem("Removido com sucesso");
         return new ResponseEntity<RespostaModelo>(rm, HttpStatus.OK);

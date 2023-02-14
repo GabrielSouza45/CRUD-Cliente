@@ -1,44 +1,44 @@
 import InputLabel from "../../Components/inputLabel/inputLabel";
-import "../cadastroCantor/cadCantor.css";
+import "../cadastroCliente/cadCliente.css";
 import "../../Components/btnCadastrar/btnCadastrar.css";
 import { BsPencil } from "react-icons/bs";
 import { BsTrash } from "react-icons/bs";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
-const CadastroCantor = ({
+const CadastroCliente = ({
   botao,
   evento,
-  cadCantor,
-  objCantor,
-  altCantor,
-  rmvCantor,
+  cadCliente,
+  objCliente,
+  altCliente,
+  rmvCliente,
 }) => {
   return (
-    <section className="cadastro-Cantor">
-      <h3>Cantor</h3>
-      <form className="cadastroCantor">
+    <section className="cadastro-Cliente">
+      <h3>Cliente</h3>
+      <form className="cadastroCliente">
         <InputLabel
           texto="Nome"
           evento={evento}
-          valor={objCantor.nome}
+          valor={objCliente.nome}
           nome="nome"
           tipo="text"
           holder="Digite aqui"
         />
 
         <InputLabel
-          texto="email"
+          texto="Email"
           evento={evento}
-          valor={objCantor.email}
+          valor={objCliente.email}
           nome="email"
           tipo="text"
           holder="Digite aqui"
         />
 
         <InputLabel
-          texto="Idade do cantor"
+          texto="CPF"
           evento={evento}
-          valor={objCantor.cpf}
+          valor={objCliente.cpf}
           nome="cpf"
           tipo="text"
           holder="Digite aqui"
@@ -49,14 +49,14 @@ const CadastroCantor = ({
             type="button"
             className="buttonCadastrar"
             value="cadastrar"
-            onClick={cadCantor}
+            onClick={cadCliente}
           />
         ) : (
           <div className="buttons">
-            <button className="buttonEditar" id="alt" onClick={altCantor}>
+            <button className="buttonEditar" id="alt" onClick={altCliente}>
               <BsPencil />
             </button>
-            <button className="buttonEditar" id="rmv" onClick={rmvCantor}>
+            <button className="buttonEditar" id="rmv" onClick={rmvCliente}>
               <BsTrash />
             </button>
             <button className="buttonEditar" id="esc">
@@ -69,4 +69,4 @@ const CadastroCantor = ({
   );
 };
 
-export default CadastroCantor;
+export default CadastroCliente;

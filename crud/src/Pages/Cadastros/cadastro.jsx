@@ -1,4 +1,4 @@
-import CadastroCantor from "../cadastroCantor/CadastroCantor";
+import CadastroCliente from "../cadastroCliente/CadastroCliente";
 import CadastroMusica from "../cadastroMusica/CadastroMusica";
 import Tabela from "../consultas/tabela";
 import TabelaMusica from "../consultas/tabelaMusica";
@@ -7,12 +7,12 @@ import "./cadastro.css";
 const Cadastro = ({
   botao,
   evento,
-  cadCantor,
-  objCantor,
+  cadCliente,
+  objCliente,
   selecionar,
   vetor,
-  altCantor,
-  rmvCantor,
+  altCliente,
+  rmvCliente,
   eventoMus,
   cadMusica,
   objMus,
@@ -26,16 +26,16 @@ const Cadastro = ({
     <>
       <section className="cadastro">
         <div className="cadastros">
-          <CadastroCantor
+          <CadastroCliente
             evento={evento}
-            cadCantor={cadCantor}
-            objCantor={objCantor}
-            altCantor={altCantor}
-            rmvCantor={rmvCantor}
+            cadCliente={cadCliente}
+            objCliente={objCliente}
+            altCliente={altCliente}
+            rmvCliente={rmvCliente}
             botao={botao}
           />
 
-          {/* <button onClick={cadastrarCantor}>Cadastrar</button> */}
+          {/* <button onClick={cadastrarCliente}>Cadastrar</button> */}
 
           <CadastroMusica
             eventoMus={eventoMus}
@@ -52,7 +52,7 @@ const Cadastro = ({
         </div>
       </section>
 
-      <section className="tabelaCantor">
+      <section className="tabelaCliente">
         <Tabela vetor={vetor} selecionar={selecionar} />
       </section>
       <section className="tabelaMusica">

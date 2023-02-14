@@ -39,7 +39,7 @@ tr{
 }
 
 
-.tabelaCantor h3{
+.tabelaCliente h3{
     width: 100vw;
     margin-top: 50px;
     align-items: center;
@@ -58,7 +58,7 @@ tr{
     height: 250px;
     padding-bottom: 25px;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
     margin-top: 25px;
 }
 

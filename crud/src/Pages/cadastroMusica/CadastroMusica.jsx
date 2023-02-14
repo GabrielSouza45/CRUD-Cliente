@@ -7,7 +7,7 @@ import {IoIosCloseCircleOutline} from "react-icons/io";
 
 const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, vetorMus, altMusica, rmvMusica, botaoMus}) => {
   return (
-    <section className="cadastro-musica">
+    <section className="cadastro-endereco">
       <h3>Música</h3>
       <form className="cadastroMusica">
 
@@ -22,7 +22,7 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
         
       </select>
         <InputLabel
-          texto="bairro"
+          texto="Bairro"
           evento={eventoMus}
           valor={objMus.bairro}
           nome="bairro"
@@ -31,7 +31,7 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
         />
 
         <InputLabel
-          texto="logradouro"
+          texto="Logradouro"
           evento={eventoMus}
           valor={objMus.logradouro}
           nome="logradouro"
@@ -39,7 +39,7 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
           holder="Digite aqui"
         />
         <InputLabel
-          texto="cep"
+          texto="CEP"
           evento={eventoMus}
           valor={objMus.cep}
           nome="cep"
@@ -47,7 +47,7 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
           holder="Digite aqui"
         />
         <InputLabel
-          texto="numero"
+          texto="Número"
           evento={eventoMus}
           valor={objMus.numero}
           nome="numero"
@@ -55,7 +55,7 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
           holder="Digite aqui"
         />
         <InputLabel
-          texto="cidade"
+          texto="Cidade"
           evento={eventoMus}
           valor={objMus.cidade}
           nome="cidade"
@@ -63,7 +63,7 @@ const CadastroMusica = ({vetor, eventoMus, cadMusica, objMus, selecionarMusica, 
           holder="Digite aqui"
         />
         <InputLabel
-          texto="uf"
+          texto="UF"
           evento={eventoMus}
           valor={objMus.uf}
           nome="uf"
